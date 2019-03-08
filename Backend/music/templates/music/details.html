@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album Details</title>
+</head>
+<body>
+<h2> {{ album.Title }}</h2>
+<h3> {{ album.Artist }} - {{ album.Year }}</h3>
+<ul>
+    {% for song in album.song_set.all %}
+
+    <li> {{ song.title }} - {{ song.file_type }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

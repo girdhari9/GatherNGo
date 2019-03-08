@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> Here are all the albums</h3>
+{% if all_albums %}
+    <ul>
+        {% for album in all_albums %}
+        <li></li><a href=" {% url 'music:details' album.id %}">{{ album.Title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>
