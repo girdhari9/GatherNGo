@@ -1,3 +1,7 @@
+# Assigned Task
+Giridhari Lal Gupta (2018201019) - Frontend and DB
+Souparna Das (2018201010) - Backend
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
