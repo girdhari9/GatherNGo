@@ -1,5 +1,5 @@
 # Assigned Task
-Giridhari Lal Gupta (2018201019) - Frontend and DB
+Giridhari Lal Gupta (2018201019) - Frontend and DB <br />
 Souparna Das (2018201010) - Backend
 
 # Frontend
