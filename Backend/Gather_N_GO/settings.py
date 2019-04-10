@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Gather_N_GO.Users',
+    # 'Gather_N_GO.Users.apps.UsersConfig',
+    # 'Users.UserConfig',     #add
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,5 @@ STATIC_URL = '/static/'
 #added
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+AUTH_USER_MODEL = 'Users.User'    #added
