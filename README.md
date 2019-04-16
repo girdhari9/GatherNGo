@@ -1,31 +1,66 @@
-# Assigned Task
-Giridhari Lal Gupta (2018201019) - Frontend and DB <br />
-Souparna Das (2018201010) - Backend
+# Team Falcon11
 
-# Frontend
+Designed a fully working blogger website having features of creating, publishing and viewing blogs and comments etc with specific functionalities mentioned in the problem statement provided.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+## Team Members:
 
-## Development server
+1) Giridhari Lal Gupta 		2018201019
+2) Monu Tayal			2018201042
+3) Danish Mukthar		2018201016
+4) Shubham Pokhriyal		2018201080
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features:
 
-## Code scaffolding
+### Specific to Authors(Admins):
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Multiple Authors can register.
+* A author can post many blogs.
+* The auther can edit and delete his/her blogs.
+* Author can style his blogs and add images.
+* Author can comment.
+* Profile option for looking at all profiles and also editing own profile.
+* All Users option to look at list of all authors and their contact information.
+* Logout option to go back to user mode.
 
-## Build
+### Specific to Users:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Users can browse blogs and comment.
+* New User option to register for author.
+* Login option to login into author profile.
+* Achieve option for looking all blogs with their dates.
 
-## Running unit tests
+Built using Python, Flask, sqlite3, FontAwesome and TinyMCE.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Screenshots:
 
-## Running end-to-end tests
+![Screenshot 0](https://github.com/girdhari9/Falcon/blob/master/static/Screenshot/screencapture-0-0-0-0-5000-2018-11-14-16_35_03.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+![Screenshot 1](https://github.com/girdhari9/Falcon/blob/master/static/Screenshot/screencapture-0-0-0-0-5000-post-A-Message-from-Jean-Paul-Sartre-Turn-Off-Your-Goddamn-Read-Receipts-2018-11-14-16_38_04.png)
 
-## Further help
+![Screenshot 2](https://github.com/girdhari9/Falcon/blob/master/static/Screenshot/screencapture-0-0-0-0-5000-archive-2018-11-14-16_35_47.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![Screenshot 3](https://github.com/girdhari9/Falcon/blob/master/static/Screenshot/screencapture-0-0-0-0-5000-register-2018-11-14-16_38_23.png)
+
+![Screenshot 4](https://github.com/girdhari9/Falcon/blob/master/static/Screenshot/screencapture-0-0-0-0-5000-publish-2018-11-14-16_39_27.png)
+
+## End User Documentation:
+
+Install everything listed in requirements.txt using (or do it manually)
+
+	pip install -r requirements.txt
+
+Clone the repository on your local system
+
+	git clone https://github.com/girdhari9/Falcon.git
+
+Open the directory
+
+	cd Falcon
+
+Generate the sqlite database by running (if falcon.db not already present)
+
+	sqlite3 falcon.db < schema.sql
+
+setup a virtual environment
+
+	python2 falcon.py

@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Register - {{ websiteName }}</title>
+{% endblock %}
+{% block content %}
+
+<script type="text/javascript">
+  function checkUsername(){
+    x = $('#username').val();
+    $.ajax({
+      url:'/check-username',
+      method: 'POST',
+      data: { x:x },
+      success: function (result) {
+        var inputVal = document.getElementById("username").value;
+        if (result == '1') {
+            $("#username").attr("disabled", false).css("border","2px solid green");
+        }
+        else{
+            $("#username").attr("disabled", false).css("border","2px solid red");
+        }
+      }  
+    });
+}
+</script>
+<!--== Page Title Area Start ==-->
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Registeration</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>{{ websiteDesc }}</p>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Login Page Content Start ==-->
+<section id="lgoin-page-wrap" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 m-auto">
+            	<div class="login-page-content">
+            		<div class="login-form">
+                         {% with messages = get_flashed_messages() %}
+                             {% if messages %}
+                                   {% for message in messages %}
+                                   <h5>{{ message }}</h5>
+                                   {% endfor %}
+                             {% endif %}
+                        {% endwith %}
+            			<h3>Sign Up</h3>
+						<form id="authForm" action="{{ url_for('doRegister') }}" method="POST">
+                            <div class="name">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" name="usertype" placeholder="User" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="mobile" name="username" onchange="checkUsername()" placeholder="Username" id="username" required>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="name">
+								<div class="row">
+									<div class="col-md-6">
+										<input type="text" name="firstname" placeholder="First Name" required>
+									</div>
+									<div class="col-md-6">
+										<input type="text" name="lastname" placeholder="Last Name" required>
+									</div>
+								</div>
+							</div>
+							<div class="username">
+								<input type="email" name="emailid" placeholder="Email" required>
+							</div>
+							<div class="name">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" name="gender" placeholder="Gender" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="mobile" name="mobile_no" placeholder="Mobile Number" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="name">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="password" name="password" placeholder="Password" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="log-btn">
+								<button type="submit"><i class="fa fa-check-square"></i> Sign Up</button>
+							</div>
+						</form>
+            		</div>
+            		
+            		<div class="login-other">
+            			<span class="or">or</span>
+            			<a href="#" class="login-with-btn facebook"><i class="fa fa-facebook"></i> Signup With Facebook</a>
+            			<a href="#" class="login-with-btn google"><i class="fa fa-google"></i> Signup With Google</a>
+            		</div>
+            		<div class="create-ac">
+            			<p>Have an account? <a href="{{ url_for('login') }}">Sign In</a></p>
+            		</div>
+            		<div class="login-menu">
+            			<a href="#">About</a>
+            			<span>|</span>
+            			<a href="#">Contact</a>
+            		</div>
+            	</div>
+            </div>
+    	</div>
+    </div>
+</section>
+<!--== Login Page Content End ==-->
+{% endblock %}

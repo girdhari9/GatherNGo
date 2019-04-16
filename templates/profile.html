@@ -1,0 +1,240 @@
+{% extends "layout.html" %} 
+{% block title %}
+<title>User's Profile - {{ websiteName }}</title>
+<meta name="description" content="{{ websiteDesc }}">
+{% endblock %}
+{% block content %} 
+<!--== Page Title Area Start ==-->
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>My Profile</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>{{ websiteDesc }}</p>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<!--== Page Title Area End ==-->
+
+<!--== Car List Area Start ==-->
+<section id="car-list-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Area Start -->
+            <div class="col-lg-4">
+                <div class="sidebar-content-wrap">
+                    <!-- Single Sidebar Start -->
+                    <div class="single-sidebar">
+                        <h3>Recent Travelling Detail</h3>
+
+                        <div class="sidebar-body">
+                            <p><i class="fa fa-map-marker"></i> {{ address }}</p>
+                            <p><i class="fa fa-map-marker"></i> {{ address }}</p>
+                            <p><i class="fa fa-clock-o"></i> {{ timing }}</p>
+                            <p><i class="fa fa-clock-o"></i> Amount : 39 Rs.</p>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar End -->
+
+                    <!-- Single Sidebar Start -->
+                    <div class="single-sidebar">
+                        <h3>Rental Persons</h3>
+
+                        <div class="sidebar-body">
+                            <ul class="recent-tips">
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/service1-img.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <h4><a href="#">Swapnil Anand</a></h4>
+                                        <span class="date">Rating : 4.5</span>
+                                    </div>
+                                </li>
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/service3-img.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <h4><a href="#">Kriti Bansal</a></h4>
+                                        <span class="date">Rating : 5.0</span>
+                                    </div>
+                                </li>
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/service2-img.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <h4><a href="#">Manish Bansal</a></h4>
+                                        <span class="date">Rating : 4.6</span>
+                                    </div>
+                                </li>
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/service1-img.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <h4><a href="#">Kishan Singhal</a></h4>
+                                        <span class="date">Rating : 4.4</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar End -->
+
+                    <!-- Single Sidebar Start -->
+                    <div class="single-sidebar">
+                        <h3>Connect with Us</h3>
+
+                        <div class="sidebar-body">
+                            <div class="social-icons text-center">
+                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-behance"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" target="_blank"><i class="fa fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Sidebar End -->
+                </div>
+            </div>
+            <!-- Sidebar Area End -->
+
+            <!-- Car List Content Start -->
+            <div class="col-lg-8">
+                <div class="car-list-content m-t-50">
+                    <!-- Single Car Start -->
+                    <div class="single-car-wrap">
+                        <div class="row">
+                            <!-- Single Car Thumbnail -->
+                            <div class="col-lg-5">
+                                <div class="car-list-thumb car-thumb-1"></div>
+                            </div>
+                            <!-- Single Car Thumbnail -->
+
+                            <!-- Single Car Info -->
+                            <div class="col-lg-7">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <div class="car-list-info">
+                                            <h2><a href="#">{{ profile[1] }} {{ profile[2] }}</a></h2>
+                                            <h5><i class="fa fa-mobile"></i> +91- {{ profile[5] }}</h5>
+                                            <p>{{ websiteDesc }}</p>
+                                            <ul class="car-info-list">
+                                                <li>Male Only</li>
+                                                <li>Female Only</li>
+                                                <li>Both</li>
+                                            </ul>
+                                            <p class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star unmark"></i>
+                                            </p>
+                                            <a href="#" class="rent-btn">Edit Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Car info -->
+                        </div>
+                    </div>
+                    <!-- Single Car End -->
+                    <div class="review-area">
+                        <h3>Change Details</h3>
+                        <div class="review-star">
+                            
+                        </div>
+                        <div class="review-form">
+                            <form action="index.html">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="name-input">
+                                            <input type="text" value="{{profile[1]}}" placeholder="First Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="text" value="{{profile[2]}}" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <select class="custom-select" style="width : 1000px">
+                                              <option selected value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                              <option value="Other">Other</option>
+                                            </select>
+                                            <!-- <input type="text" name="gender" placeholder="Gender"> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="password" name="oldPassword" placeholder="Old Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="password" name="newPassword" placeholder="New Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="mobile" placeholder="Mobile No.">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="email-input">
+                                            <input type="date" placeholder="Date of Birth">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="message-input">
+                                    <textarea name="review" cols="30" rows="5" placeholder="Address"></textarea>
+                                </div>
+
+                                <div class="input-submit">
+                                    <button type="submit">Submit</button>
+                                    <button type="reset">Clear</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </br>
+                </div>
+            </div>
+            <!-- Car List Content End -->
+        </div>
+    </div>
+</section>
+<!--== Car List Area End ==-->
+{% endblock %}
