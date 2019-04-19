@@ -34,7 +34,7 @@
         <script src="http://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
-<body class="loader-active" onload="getLocation()">
+<body class="loader-active" onload="geoLocation()">
 
     <!--== Preloader Area Start ==-->
     <div class="preloader">
@@ -291,7 +291,88 @@
 
     <!--=== Mian Js ===-->
     <script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9JkQXx1V6_Z9XUUcIXsUlYHpeCst3AcI&libraries=places"
+         async defer></script>
+    <script>
+        var componentForm = {
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          country: 'long_name',
+          postal_code: 'short_name'
+        };
 
+        function geoLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            alert("Geolocation is not supported by this browser.");
+          }
+        }
+        function showPosition(position) {
+              $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&key=AIzaSyD9JkQXx1V6_Z9XUUcIXsUlYHpeCst3AcI', function(place) {
+                console.log(place)
+                document.getElementById('sourceLocation').value = place.results[0].formatted_address;
+
+                for (var i = 0; i < place.results[0].address_components.length; i++) {
+                    for(j = 0; j < place.results[0].address_components[i].types.length; j++){
+                        var addressType = place.results[0].address_components[i].types[j];
+                        if (componentForm[addressType]) {
+                          var val = place.results[0].address_components[i][componentForm[addressType]];
+                          document.getElementById(addressType).value = val;
+                        }
+                    }
+                }
+            });
+        }
+        
+    </script>
+
+    <script>
+      var placeSearch, autocomplete, inputName;
+        var componentForm = {
+          street_address: 'short_name',
+          locality: 'long_name',
+          administrative_area_level_1: 'short_name',
+          country: 'long_name',
+          postal_code: 'short_name'
+        };
+
+        function initAutocomplete(inputid) {
+            inputName = inputid;
+          // Create the autocomplete object, restricting the search predictions to
+          // geographical location types.
+          autocomplete = new google.maps.places.Autocomplete(
+              document.getElementById(inputid), {types: ['geocode']});
+
+          // Avoid paying for data that you don't need by restricting the set of
+          // place fields that are returned to just the address components.
+          autocomplete.setFields(['address_component']);
+
+          // When the user selects an address from the drop-down, populate the
+          // address fields in the form.
+          autocomplete.addListener('place_changed', fillInAddress);
+        }
+
+        function fillInAddress() {
+          // Get the place details from the autocomplete object.
+          var place = autocomplete.getPlace();
+          console.log(place)
+
+          // Get each component of the address from the place details,
+          // and then fill-in the corresponding field on the form.
+          for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+              var val = place.address_components[i][componentForm[addressType]];
+              console.log(inputName)
+              if (inputName == 'destinationLocation')
+                document.getElementById('dest'+ addressType).value = val;
+              else
+                document.getElementById(addressType).value = val;
+            }
+          }
+        }
+    </script>
 </body>
 
 </html>

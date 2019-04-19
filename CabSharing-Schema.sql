@@ -24,8 +24,9 @@ create table if not exists ridedetails (
   destcity text not null,
   destcountry text not null,
   destpincode integer not null,
-  ridetime TIMESTAMP
+  ridebookingdate TIMESTAMP
   DEFAULT CURRENT_TIMESTAMP,
+  ridetime TIMESTAMP null,
   created_at TIMESTAMP
   DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP null,

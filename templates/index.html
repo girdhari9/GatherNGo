@@ -5,56 +5,78 @@
 {% endblock %}
 {% block content %} 
 
-<script>
-var x = document.getElementById("demo");
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-    console.log(position.coords.latitude)
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
-</script>
-
 <!--== Slider Area Start ==-->
 <section id="slider-area">
     <!--== slide Item One ==-->
     <div class="single-slide-item overlay">
         <div class="container">
+            <!-- Search box -->
+            <div id="map"></div>
             <div class="row">
                 <div class="col-lg-5">
                     <div class="book-a-car">
-                        <p id="demo">html</p>
-                        <form action="index.html" method="post">
-                            <!--== Pick Up Location ==-->
-                            <div class="pickup-location book-item">
-                                <h4>PICK-UP LOCATION:</h4>
-                                <input type="text" id="sourceLocation" placeholder="Source Location"/>
-                            </div>
-                            <!--== Pick Up Location ==-->
-                            <div class="pickup-location book-item">
-                                <h4>Destination Location:</h4>
-                                <input type="text" id="destinationLocation" placeholder="Destination Location"/>
-                            </div>
-                            <!--== Pick Up Date ==-->
-                            <div class="pick-up-date book-item">
-                                <div class="return-car">
-                                    <h4>Pick-up Time:</h4>
-                                    <input id="startTime" type="time" placeholder="Return Date" />
+                        <form action="{{url_for('rideDetails')}}" method="post">
+                                <!--== Pick Up Location ==-->
+                                <div class="pickup-location book-item">
+                                    <h4>Source Address:</h4>
+                                    <input type="text" id="sourceLocation" name="sourceLocation" autocomplete="on" onFocus="initAutocomplete('sourceLocation')" placeholder="Source Location"/>
+                                    <input type="text" id="locality" name="locality" autocomplete="on" />
+                                    <input type="text" id="administrative_area_level_1" name="administrative_area_level_1" autocomplete="on" />
+                                    <input type="text" id="country" name="country" autocomplete="on" />
+                                    <input type="text" id="postal_code" name="postal_code" autocomplete="on" />
                                 </div>
-                            </div>
-                            <!--== Pick Up Location ==-->
+                                <!--== Pick Up Location ==-->
 
-                            <div class="book-button text-center">
-                                <button class="book-now-btn">Book Now</button>
-                            </div>
-                        </form>
+                                <!--== Pick Up Date ==-->
+                                <div class="pick-up-date book-item">
+                                    <h4> Destination Address:</h4>
+                                     <input type="text" id="destinationLocation" name="destinationLocation" autocomplete="on" onFocus="initAutocomplete('destinationLocation')" placeholder="destDestination Location"/>
+                                     <input type="text" id="destlocality" name="destlocality" autocomplete="on" />
+                                    <input type="text" id="destadministrative_area_level_1" name="destadministrative_area_level_1" autocomplete="on" />
+                                    <input type="text" id="destcountry" name="destcountry" autocomplete="on" />
+                                    <input type="text" id="destpostal_code" name="destpostal_code" autocomplete="on" />
+                                </div>
+                                <!--== Pick Up Location ==-->
+
+                                <!--== Car Choose ==-->
+                                <div class="choose-car-type book-item">
+                                    <h4>PICK UP AT:</h4>
+                                    <select class="custom-select" name="rideTime">
+                                      <option value="Select Time">Select Time</option>
+                                   <!---->
+                                   <option value="6:30 PM">6:15 PM </option>
+                                   <option value="2019-04-16T18:30:00+05:30">6:30 PM </option>
+                                   <option value="2019-04-16T18:45:00+05:30">6:45 PM </option>
+                                   <option value="2019-04-16T19:00:00+05:30">7:00 PM </option>
+                                   <option value="2019-04-16T18:00:00+05:30">6:00 PM </option>
+                                   <option value="2019-04-16T19:15:00+05:30">7:15 PM </option>
+                                   <option value="2019-04-16T19:30:00+05:30">7:30 PM </option>
+                                   <option value="2019-04-16T19:45:00+05:30">7:45 PM </option>
+                                   <option value="2019-04-16T20:00:00+05:30">8:00 PM </option>
+                                   <option value="2019-04-16T20:15:00+05:30">8:15 PM </option>
+                                   <option value="2019-04-16T20:30:00+05:30">8:30 PM </option>
+                                   <option value="2019-04-16T20:45:00+05:30">8:45 PM </option>
+                                   <option value="2019-04-16T21:00:00+05:30">9:00 PM </option>
+                                   <option value="2019-04-16T21:15:00+05:30">9:15 PM </option>
+                                   <option value="2019-04-16T21:30:00+05:30">9:30 PM </option>
+                                   <option value="2019-04-16T21:45:00+05:30">9:45 PM </option>
+                                   <option value="2019-04-16T22:00:00+05:30">10:00 PM </option>
+                                   <option value="2019-04-16T22:15:00+05:30">10:15 PM </option>
+                                   <option value="2019-04-16T22:30:00+05:30">10:30 PM </option>
+                                   <option value="2019-04-16T22:45:00+05:30">10:45 PM </option>
+                                   <option value="2019-04-16T23:00:00+05:30">11:00 PM </option>
+                                   <option value="2019-04-16T23:15:00+05:30">11:15 PM </option>
+                                   <option value="2019-04-16T23:30:00+05:30">11:30 PM </option>
+                                   <option value="2019-04-16T23:45:00+05:30">11:45 PM </option>
+                                    </select>
+                                </div>
+                                <!--== Car Choose ==-->
+
+                                <div class="book-button text-center">
+                                    <button class="book-now-btn">Book Now</button>
+                                </div>
+                            </form>
+                            <p id="demo"></p>
                     </div>
                 </div>
 
@@ -112,7 +134,7 @@ function showPosition(position) {
             <!-- About Video Start -->
             <div class="col-lg-6">
                 <div class="about-video">
-                    <iframe src="https://player.vimeo.com/video/121982328?title=0&byline=0&portrait=0"></iframe>
+                    <iframe src="#"></iframe>
                 </div>
             </div>
             <!-- About Video End -->

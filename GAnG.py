@@ -273,6 +273,32 @@ def doEdit():
   else:
     abort(404)
 
+@app.route('/People-Near-You', methods=['GET', 'POST'])
+def rideDetails():
+  if session.get('logged_in'):
+    if request.method == 'POST':
+      # if request.form['contenttype'] == "post":
+      sourceAdd = request.form['sourceLocation']
+      sourceCity = request.form['locality']
+      sourceCountry = request.form['country']
+      sourcePincode= request.form['postal_code']
+      destAdd = request.form['destinationLocation']
+      destCity = request.form['destlocality']
+      destCountry = request.form['destcountry']
+      destPincode = request.form['destpostal_code']
+      g.db.execute('insert into rideDetails (userid, sourceaddress, sourcecity, sourcecountry, sourcepincode, destaddress, destcity, destcountry, destpincode, ridetime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                   (session['userid'], sourceAdd, sourceCity, sourceCountry, sourcePincode, destAdd, destCity, destCountry, destPincode, request.form['rideTime']))
+      g.db.commit()
+      RideDetails = [sourceAdd, destAdd, request.form['rideTime']]
+      return render_template("people-cluster.html")
+      # else:
+      #   flash('Something went wrong!')
+      #   return redirect(request.url)
+    elif request.method == 'GET':
+      flash('Something went wrong!')
+      return redirect(request.url)
+  else:
+    return render_template('login.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

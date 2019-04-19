@@ -116,7 +116,7 @@
 
 	/* === CAR and ABOUT PAGE RESPONSIVE CSS === */
 	.car-list-info {
-		margin-left: -15px;
+		padding: 15px;
 	}
 	.car-list-content .col-lg-6:nth-child(3) .single-car-wrap {
 		margin-bottom: 0;
