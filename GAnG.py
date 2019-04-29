@@ -5,6 +5,8 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 from contextlib import closing
 from werkzeug.contrib.atom import AtomFeed
 from urlparse import urljoin
+import googlemaps, pandas as pd
+import geopy.distance
 
 # Creating the application.
 app = Flask(__name__)
@@ -142,6 +144,40 @@ def checkAuthorUrl(posturl):
     return False 
   else:
     abort(404) 
+
+def createCluster(distancelist):
+  userList = []
+  for key, val in distancelist.items(): 
+    print(str(key), val)
+    if val <= 1:
+      userList.append(key[0])
+  return userList
+      
+def getUsersDetail(userList):
+  print(userList)
+  print(userList[0])
+  userDetails = g.db.execute('SELECT * FROM logindetails', g.db)
+  return [dict(userid=detail[0], fullname=detail[1], gender=detail[3]) for detail in userDetails.fetchall()]
+
+def doCluster(sourceLat, sourceLong, destLat, destLong, City, rideTime, pincode):
+  # Need to optimize Query
+  query = "SELECT * FROM ridedetails WHERE (sourcecity LIKE '%" + City + "%' and sourcepincode = '"+ pincode +"') and ridetime = '" + rideTime + "'"
+  df = pd.read_sql(query, g.db)
+  distancelist = {}
+  for index in range(len(df)):
+    if session['userid'] == df.iloc[[index]]['userid'].iloc[0]:
+      continue
+
+    LatOrigin = float(df.iloc[[index]]['sourcelat'])
+    LongOrigin = float(df.iloc[[index]]['sourcelong'])
+    origins = (LatOrigin,LongOrigin)
+
+    userorigin = (sourceLat, sourceLong)
+    distancelist[df.iloc[[index]]['userid'].iloc[0]] = geopy.distance.vincenty(origins, userorigin).km
+  print(distancelist) 
+  userList = createCluster(distancelist)
+  return getUsersDetail(userList)
+
 
 @app.before_request
 def before_request():
@@ -282,15 +318,20 @@ def rideDetails():
       sourceCity = request.form['locality']
       sourceCountry = request.form['country']
       sourcePincode= request.form['postal_code']
+      sourceLat, sourceLong = request.form['lat'], request.form['lng'] 
       destAdd = request.form['destinationLocation']
       destCity = request.form['destlocality']
       destCountry = request.form['destcountry']
       destPincode = request.form['destpostal_code']
-      g.db.execute('insert into rideDetails (userid, sourceaddress, sourcecity, sourcecountry, sourcepincode, destaddress, destcity, destcountry, destpincode, ridetime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                   (session['userid'], sourceAdd, sourceCity, sourceCountry, sourcePincode, destAdd, destCity, destCountry, destPincode, request.form['rideTime']))
+      destLat, destLong = request.form['destlat'], request.form['destlng']
+      # if sourceCity != destCity:
+      #   flash('Source and Destination address should be in same CITY!')
+      #   return redirect(request.url)
+      g.db.execute('insert into rideDetails (userid, sourceaddress, sourcecity, sourcecountry, sourcepincode, sourcelat, sourcelong, destaddress, destcity, destcountry, destpincode, destlat, destlong, ridetime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                   (session['userid'], sourceAdd, sourceCity, sourceCountry, sourcePincode, sourceLat, sourceLong, destAdd, destCity, destCountry, destPincode, destLat, destLong, request.form['rideTime']))
       g.db.commit()
       RideDetails = [sourceAdd, destAdd, request.form['rideTime']]
-      return render_template("people-cluster.html")
+      return render_template("people-cluster.html", clustering = doCluster(sourceLat, sourceLong, destLat, destLong, sourceCity, request.form['rideTime'], sourcePincode))
       # else:
       #   flash('Something went wrong!')
       #   return redirect(request.url)
