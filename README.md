@@ -1,8 +1,8 @@
 # Team GAnG
 
 ## Task Distribution:
-1) Giridhari Lal Gupta		Front-end and DB
-2) Souparna Das			Back-end
+1) Giridhari Lal Gupta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		Front-end and DB
+2) Souparna Das&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			Back-end
 
 ## Team Members:
 
