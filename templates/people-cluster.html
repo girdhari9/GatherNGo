@@ -11,7 +11,7 @@
             <!-- Page Title Start -->
             <div class="col-lg-12">
                 <div class="section-title  text-center">
-                    <h2>Nearest People, Whoes ready to go.</h2>
+                    <h2>People Near You</h2>
                     <span class="title-line"><i class="fa fa-car"></i></span>
                     <p>{{ websiteDesc }}</p>
                 </div>
@@ -20,8 +20,6 @@
         </div>
     </div>
 </section>
-<!--== Page Title Area End ==-->
-
 <!--== Car List Area Start ==-->
 <section id="car-list-area" class="section-padding">
     <div class="container">
@@ -39,7 +37,7 @@
                             <p><i class="fa fa-clock-o"></i> {{ timing }}</p>
                             <p><i class="fa fa-clock-o"></i> Amount : 39 Rs.</p>
                         </div>
-                    </div>  
+                    </div>
                     <!-- Single Sidebar End -->
 
                     <!-- Single Sidebar Start -->
@@ -48,23 +46,89 @@
 
                         <div class="sidebar-body">
                             <ul class="recent-tips">
-                                {% for userDetail in clustering %}
                                 <li class="single-recent-tips">
                                     <div class="recent-tip-thum">
                                         <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
                                     </div>
                                     <div class="recent-tip-body">
-                                        <h4><a href="#">{{userDetail[1]}}</a></h4>
-                                        <span class="date">Rating : 4.5</span>
+                                        <div class="recent-trip">
+                                            <h4><a href="#">Manish Bansal</a></h4>
+                                        <span class="date">Rating : 4.6</span>
                                         <br>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>
                                         <span class="fa fa-star"></span>
+                                        </div>
+                                        <div class="add-trip-person">
+                                            <button><i class="fas fa-user-plus"></i></button>
+                                        </div>
                                     </div>
                                 </li>
-                                {% endfor %}
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <div class="recent-trip">
+                                            <h4><a href="#">Manish Bansal</a></h4>
+                                        <span class="date">Rating : 4.6</span>
+                                        <br>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        </div>
+                                        <div class="add-trip-person">
+                                            <button><i class="fas fa-user-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                    <div class="recent-tip-body">
+                                        <div class="recent-trip">
+                                            <h4><a href="#">Manish Bansal</a></h4>
+                                        <span class="date">Rating : 4.6</span>
+                                        <br>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        </div>
+                                        <div class="add-trip-person">
+                                            <button><i class="fas fa-user-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="single-recent-tips">
+                                    <div class="recent-tip-thum">
+                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
+                                    </div>
+                                   <div class="recent-tip-body">
+                                        <div class="recent-trip">
+                                            <h4><a href="#">Manish Bansal</a></h4>
+                                        <span class="date">Rating : 4.6</span>
+                                        <br>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                        </div>
+                                        <div class="add-trip-person">
+                                            <button><i class="fas fa-user-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -95,140 +159,62 @@
                     <!-- Single Car Start -->
                     <div class="single-car-wrap">
                         <div class="row">
-                            <!-- Single Car Thumbnail -->
-                            <div class="col-lg-5">
-                                <div class="car-list-thumb car-thumb-1"></div>
-                            </div>
-                            <!-- Single Car Thumbnail -->
-
                             <!-- Single Car Info -->
-                            <div class="col-lg-7">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <div class="car-list-info">
-                                            <h2><a href="#">Aston Martin One-77</a></h2>
-                                            <h5>39$ Rent /per a day</h5>
-                                            <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                            <ul class="car-info-list">
-                                                <li>Air Condition</li>
-                                                <li>Diesel</li>
-                                                <li>Auto</li>
-                                            </ul>
-                                            <p class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star unmark"></i>
-                                            </p>
-                                            <a href="#" class="rent-btn">Book It</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-lg-12">
+                                <div class="locate-map">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487293.2774699731!2d78.12784088715941!3d17.412808362790148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C+Telangana!5e0!3m2!1sen!2sin!4v1555794377640!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                           </div>
+                              
                             </div>
                             <!-- Single Car info -->
                         </div>
+                       
                     </div>
-                    <!-- Single Car End -->
-
-                    <!-- Single Car Start -->
-                    <div class="single-car-wrap">
-                        <div class="row">
-                            <!-- Single Car Thumbnail -->
-                            <div class="col-lg-5">
-                                <div class="car-list-thumb car-thumb-2"></div>
+                     <div class="row">
+                            <div class="col-lg-12">
+                                  <a href="#" class="rent-btn request-btn">Request for Book</a>
                             </div>
-                            <!-- Single Car Thumbnail -->
-
-                            <!-- Single Car Info -->
-                            <div class="col-lg-7">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <div class="car-list-info">
-                                            <h2><a href="#">Aston Martin One-77</a></h2>
-                                            <h5>39$ Rent /per a day</h5>
-                                            <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                            <ul class="car-info-list">
-                                                <li>Air Condition</li>
-                                                <li>Diesel</li>
-                                                <li>Auto</li>
-                                            </ul>
-                                            <p class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star unmark"></i>
-                                            </p>
-                                            <a href="#" class="rent-btn">Book It</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Car info -->
-                        </div>
+                     </div>
+                    <!-- chat box -->
+                    <div class="review-area">
+                      <div class="chatbox">
+                          <div class="chat-icon">
+                              <div class="chat person">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> what's up...!! </p>
+                              </div>
+                              <div class="chat me">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> what's up...!! </p>
+                              </div>
+                              <div class="chat person">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto illo deleniti nam quisquam, consectetur sint soluta numquam a, ipsum ducimus eaque labore minus laudantium, aperiam possimus. Fugiat neque dolore harum?</p>
+                              </div>
+                              <div class="chat person">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> what's up...!! </p>
+                              </div>
+                              <div class="chat me">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> what's up...!! </p>
+                              </div>
+                              <div class="chat person">
+                                  <div class="user-photo"></div>
+                                  <p class="chat-msg"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto illo deleniti nam quisquam, consectetur sint soluta numquam a, ipsum ducimus eaque labore minus laudantium, aperiam possimus. Fugiat neque dolore harum?</p>
+                              </div>
+                          </div>
+                          <div class="chat-form">
+                              <textarea class="chatarea"></textarea>
+                              <button type="button"><i class="fas fa-paper-plane"></i></button>
+                          </div>
+                      </div>
                     </div>
-                    <!-- Single Car End -->
-
-                    <!-- Single Car Start -->
-                    <div class="single-car-wrap">
-                        <div class="row">
-                            <!-- Single Car Thumbnail -->
-                            <div class="col-lg-5">
-                                <div class="car-list-thumb car-thumb-3"></div>
-                            </div>
-                            <!-- Single Car Thumbnail -->
-
-                            <!-- Single Car Info -->
-                            <div class="col-lg-7">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <div class="car-list-info">
-                                            <h2><a href="#">Aston Martin One-77</a></h2>
-                                            <h5>39$ Rent /per a day</h5>
-                                            <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                            <ul class="car-info-list">
-                                                <li>Air Condition</li>
-                                                <li>Diesel</li>
-                                                <li>Auto</li>
-                                            </ul>
-                                            <p class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star unmark"></i>
-                                            </p>
-                                            <a href="#" class="rent-btn">Book It</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Car info -->
-                        </div>
-                    </div>
-                    <!-- Single Car End -->
+                    <br>
                 </div>
-
-                <!-- Page Pagination Start -->
-                <div class="page-pagi">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- Page Pagination End -->
             </div>
             <!-- Car List Content End -->
         </div>
     </div>
 </section>
-<!--== Car List Area End ==-->
 {% endblock %}

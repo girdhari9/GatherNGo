@@ -7,10 +7,14 @@ from werkzeug.contrib.atom import AtomFeed
 from urlparse import urljoin
 import googlemaps, pandas as pd
 import geopy.distance
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map
 
 # Creating the application.
 app = Flask(__name__)
 app.config.from_object("config")
+
+app.config['GOOGLEMAPS_KEY'] = "AIzaSyD9JkQXx1V6_Z9XUUcIXsUlYHpeCst3AcI"
 
 @app.context_processor
 def variables_def():
@@ -212,4 +216,5 @@ def logout():
 
 if __name__ == "__main__":
   init_db()
+  GoogleMaps(app)
   app.run(host='0.0.0.0')
