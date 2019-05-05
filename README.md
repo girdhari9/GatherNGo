@@ -1,6 +1,8 @@
 # Team GAnG
 
-Designed a fully working blogger website having features of creating, publishing and viewing blogs and comments etc with specific functionalities mentioned in the problem statement provided.
+## Task Distribution:
+1) Giridhari Lal Gupta		Front-end and DB
+2) Souparna Das			Back-end
 
 ## Team Members:
 
