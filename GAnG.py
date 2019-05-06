@@ -52,19 +52,18 @@ def checkUsername(username):
 def createCluster(distancelist):
   userList = []
   for key, val in distancelist.items(): 
-    print(str(key), val)
     if val <= 1:
       userList.append(key[0])
   return userList
       
 def getUsersDetail(userList):
-  print(userList)
-  print(userList[0])
-  userDetails = g.db.execute('SELECT * FROM logindetails', g.db)
+  userdata = []
+  userDetails = g.db.execute('SELECT * FROM logindetails')
   for val in userList:
-    for dbval in userDetails:
-      pass
-  return [dict(userid=detail[0], fullname=detail[1], gender=detail[3]) for detail in userDetails.fetchall()]
+    for dbval in userDetails.fetchall():
+      if val == dbval[0]:
+        userdata.append(dbval)
+  return userdata
 
 def doCluster(sourceLat, sourceLong, destLat, destLong, City, rideTime, pincode):
   # Need to optimize Query
@@ -81,7 +80,6 @@ def doCluster(sourceLat, sourceLong, destLat, destLong, City, rideTime, pincode)
 
     userorigin = (sourceLat, sourceLong)
     distancelist[df.iloc[[index]]['userid'].iloc[0]] = geopy.distance.vincenty(origins, userorigin).km
-  print(distancelist) 
   userList = createCluster(distancelist)
   return getUsersDetail(userList)
 
@@ -144,8 +142,7 @@ def rideDetails():
 def login():
   if session.get('logged_in'):
     return redirect(request.url_root)
-  # username = request.form['username'].subn(r'<(script).*?</\1>(?s)', '', 0, data)[0]
-  # print username
+    
   if request.method == 'POST':
     getUser = g.db.execute('select * from logindetails where userid = ? or email = ? or phonenumber = ?', (request.form['userdetail'], request.form['userdetail'], request.form['userdetail']))
     userData = getUser.fetchone()
