@@ -46,89 +46,29 @@
 
                         <div class="sidebar-body">
                             <ul class="recent-tips">
+                                {% for val in clustering %}
                                 <li class="single-recent-tips">
                                     <div class="recent-tip-thum">
                                         <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
                                     </div>
                                     <div class="recent-tip-body">
                                         <div class="recent-trip">
-                                            <h4><a href="#">Manish Bansal</a></h4>
-                                        <span class="date">Rating : 4.6</span>
-                                        <br>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
+                                            <h4><a href="#">{{ val[1] }} {{ val[2] }}</a></h4>
+                                            <span class="date">Gender : {{ val[3] }}</span><br>
+                                            <span class="date">Rating : 4.6</span>
+                                            <br>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
                                         </div>
                                         <div class="add-trip-person">
                                             <button><i class="fas fa-user-plus"></i></button>
                                         </div>
                                     </div>
                                 </li>
-                                {{ clustering }}
-                                <li class="single-recent-tips">
-                                    <div class="recent-tip-thum">
-                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
-                                    </div>
-                                    <div class="recent-tip-body">
-                                        <div class="recent-trip">
-                                            <h4><a href="#">Manish Bansal</a></h4>
-                                        <span class="date">Rating : 4.6</span>
-                                        <br>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        </div>
-                                        <div class="add-trip-person">
-                                            <button><i class="fas fa-user-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="single-recent-tips">
-                                    <div class="recent-tip-thum">
-                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
-                                    </div>
-                                    <div class="recent-tip-body">
-                                        <div class="recent-trip">
-                                            <h4><a href="#">Manish Bansal</a></h4>
-                                        <span class="date">Rating : 4.6</span>
-                                        <br>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        </div>
-                                        <div class="add-trip-person">
-                                            <button><i class="fas fa-user-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="single-recent-tips">
-                                    <div class="recent-tip-thum">
-                                        <a href="#"><img src="{{ url_for('static', filename='assets/img/we-do/user.png')}}" alt="JSOFT"></a>
-                                    </div>
-                                   <div class="recent-tip-body">
-                                        <div class="recent-trip">
-                                            <h4><a href="#">Manish Bansal</a></h4>
-                                        <span class="date">Rating : 4.6</span>
-                                        <br>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                        </div>
-                                        <div class="add-trip-person">
-                                            <button><i class="fas fa-user-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -294,13 +234,13 @@ function initialize() {
         var myPosition = new google.maps.LatLng(51.263439, 1.03489);
 
         if(google.maps.geometry.poly.isLocationOnEdge(myPosition, polyline, 0.001)) {
-
-        var marker = new google.maps.Marker({
-                  position: myPosition,
-                  map: map,
-                  title: 'Hello World!'
-                });
-        console.log("working");}
+            var marker = new google.maps.Marker({
+                      position: myPosition,
+                      map: map,
+                      title: 'Place'
+                    });
+            console.log("working");
+        }
         else{
         console.log("not working");}
             }

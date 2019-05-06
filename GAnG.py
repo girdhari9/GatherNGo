@@ -53,7 +53,7 @@ def createCluster(distancelist):
   userList = []
   for key, val in distancelist.items(): 
     if val <= 1:
-      userList.append(key[0])
+      userList.append(key)
   return userList
       
 def getUsersDetail(userList):
@@ -128,7 +128,7 @@ def rideDetails():
                    (session['userid'], sourceAdd, sourceCity, sourceCountry, sourcePincode, sourceLat, sourceLong, destAdd, destCity, destCountry, destPincode, destLat, destLong, request.form['rideTime']))
       g.db.commit()
       RideDetails = [sourceAdd, destAdd, request.form['rideTime']]
-      return render_template("people-cluster.html", clustering = doCluster(sourceLat, sourceLong, destLat, destLong, sourceCity, request.form['rideTime'], sourcePincode))
+      return render_template("people-cluster.html", clustering=doCluster(sourceLat, sourceLong, destLat, destLong, sourceCity, request.form['rideTime'], sourcePincode))
       # else:
       #   flash('Something went wrong!')
       #   return redirect(request.url)
@@ -142,7 +142,7 @@ def rideDetails():
 def login():
   if session.get('logged_in'):
     return redirect(request.url_root)
-    
+
   if request.method == 'POST':
     getUser = g.db.execute('select * from logindetails where userid = ? or email = ? or phonenumber = ?', (request.form['userdetail'], request.form['userdetail'], request.form['userdetail']))
     userData = getUser.fetchone()
